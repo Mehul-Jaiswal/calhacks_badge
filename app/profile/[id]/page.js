@@ -4,9 +4,9 @@ import Head from 'next/head';
 
 
 export default async function Profile({ params }) {
-  const { id } = params;  // Get the ID from the URL
+  const { id } = params; 
 
-  // Setup Google Sheets API authentication (or your preferred data source)
+  // Setup Google Sheets API authentication
   const auth = new google.auth.GoogleAuth({
     credentials: {
       client_email: process.env.GOOGLE_CLIENT_EMAIL,
@@ -18,14 +18,13 @@ export default async function Profile({ params }) {
   const sheets = google.sheets({ version: 'v4', auth });
   const spreadsheetId = process.env.SHEET_ID;
 
-  // Fetch the badge data from Google Sheets (or another data source)
   const res = await sheets.spreadsheets.values.get({
     spreadsheetId,
-    range: 'Sheet1!A:H',  // Adjust this range based on your spreadsheet structure
+    range: 'Sheet1!A:H',
   });
 
   const rows = res.data.values;
-  const profile = rows.find(row => row[0] === id);  // Find the profile by ID
+  const profile = rows.find(row => row[0] === id);
 
   if (!profile) return <div>Profile not found</div>;
 

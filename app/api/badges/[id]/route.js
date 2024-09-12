@@ -14,12 +14,11 @@ export async function GET(req, { params }) {
     });
 
     const sheets = google.sheets({ version: 'v4', auth });
-    const spreadsheetId = process.env.SHEET_ID; // Your Google Sheets ID
+    const spreadsheetId = process.env.SHEET_ID;
 
-    // Fetch the badge data from Google Sheets
     const result = await sheets.spreadsheets.values.get({
       spreadsheetId,
-      range: 'Sheet1!A:G', // Ensure the range is correct
+      range: 'Sheet1!A:G',
     });
 
     const rows = result.data.values;

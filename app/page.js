@@ -9,7 +9,7 @@ import Image from 'next/image';
 export default function Home() {
   const [badgeData, setBadgeData] = useState({});
   const [errors, setErrors] = useState({});
-  const [serverError, setServerError] = useState('');  // Add a state for server-side error messages
+  const [serverError, setServerError] = useState(''); 
   const router = useRouter();
 
   const validateForm = () => {
@@ -20,15 +20,11 @@ export default function Home() {
     if (!badgeData.graduationDate) newErrors.graduationDate = 'Graduation Date is required';
 
     setErrors(newErrors);
-    
-    // If no errors, return true
     return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Reset server error message
     setServerError('');
 
     if (!validateForm()) return;
@@ -50,7 +46,7 @@ export default function Home() {
       }
     } catch (error) {
       if (error.response && error.response.status === 400) {
-        setServerError(error.response.data.error);  // Show error message from the server
+        setServerError(error.response.data.error);
       } else {
         console.error('Error submitting form:', error);
       }
