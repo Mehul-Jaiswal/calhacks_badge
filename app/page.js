@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
+
 
 export default function Home() {
   const [badgeData, setBadgeData] = useState({});
@@ -65,7 +67,7 @@ export default function Home() {
       {/* Top Bar with Logo */}
       <header className="bg-blue-600 text-white p-4 flex items-center justify-between">
         <div className="flex items-center">
-          <img src="/logo.jpg" alt="CalHacks Logo" className="w-12 h-12 rounded-full mr-4" />
+          <Image src="/logo.jpg" alt="CalHacks Logo" width={48} height={48} className="rounded-full mr-4" />
           <h1 className="text-3xl font-bold">CalHacks</h1>
         </div>
       </header>

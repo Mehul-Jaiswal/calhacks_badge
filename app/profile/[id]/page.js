@@ -1,5 +1,7 @@
 import { google } from 'googleapis';
-import Head from 'next/head'; // Import Head for meta tags
+import Image from 'next/image';
+import Head from 'next/head';
+
 
 export default async function Profile({ params }) {
   const { id } = params;  // Get the ID from the URL
@@ -42,7 +44,7 @@ export default async function Profile({ params }) {
       {/* Top Bar with Logo */}
       <header className="bg-blue-600 text-white p-4 w-full flex items-center justify-between">
         <div className="flex items-center">
-          <img src="/logo.jpg" alt="CalHacks Logo" className="w-12 h-12 rounded-full mr-4" />
+        <Image src="/logo.jpg" alt="CalHacks Logo" width={48} height={48} className="rounded-full mr-4" />
           <h1 className="text-3xl font-bold">CalHacks</h1>
         </div>
       </header>
@@ -65,7 +67,8 @@ export default async function Profile({ params }) {
         {/* QR Code */}
         <div className="mt-8">
           <h2 className="text-xl font-bold text-blue-600 mb-4">Scan Your Badge</h2>
-          <img src={qrCode} alt={`${name}'s QR Code`} className="border border-blue-300 rounded shadow-md mx-auto" />
+          <Image src={qrCode} alt={`${name}'s QR Code`} width={200} height={200} className="border border-blue-300 rounded shadow-md mx-auto" />
+
         </div>
       </div>
     </div>
